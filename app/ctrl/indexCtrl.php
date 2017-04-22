@@ -6,9 +6,23 @@
  * Time: 18:47
  */
 namespace app\ctrl;
-class indexCtrl{
-    public function index(){
-        p('index');
-    }
+//class indexCtrl{
+//    public function index(){
+//        p('indexCtrl');
+//        $model = new \core\lib\model();
+//        //admin是house中的表名
+//        $sql="select * from admin";
+//        $ret=$model->query($sql);
+//        p($ret->fetchAll());
+//    }
 
+class indexCtrl extends \core\yang{
+    public function index(){
+        $data='Hello Word';
+        $title='视图文件';
+        $this->assign('title',$title);
+        $this->assign('data',$data);
+        $this->display('index.html');
+
+    }
 }

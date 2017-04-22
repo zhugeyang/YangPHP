@@ -9,9 +9,11 @@ namespace core;
 
 class yang{
     static public  $classMap=array();
+    public $assign;
     //启动框架
     static public function run(){
         $route=new \core\lib\route();
+
         $ctrlClass = $route->ctrl;
         $action = $route->action;
         $ctrlfile = APP.'/ctrl/'.$ctrlClass.'Ctrl.php';
@@ -42,6 +44,19 @@ class yang{
             }else{
                 return false;
             }
+        }
+    }
+
+
+    public function assign($name,$value){
+        $this->assign[$name]=$value;
+    }
+
+    public function display($file){
+        $file=APP.'/views/'.$file;
+        extract($this->assign);
+        if(is_file($file)){
+            include $file;
         }
     }
 }
