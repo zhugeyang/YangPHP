@@ -4,8 +4,10 @@
  * User: pc
  * Date: 2017/4/22
  * Time: 16:44
+ * 路由类
  */
 namespace core\lib;
+use core\lib\conf;
 //路由类，解析URL，找到相应的控制器，方法，get参数等
 class route{
     public $ctrl;
@@ -29,7 +31,7 @@ class route{
             if(isset($patharr[2])){
                 $this->action = $patharr[2];
             }else{
-                $this->action = 'index';
+                $this->action = conf::get('ACTION','route');
             }
             unset($patharr[2]);
             //get参数index/index/id/1//str/3
@@ -42,8 +44,8 @@ class route{
                 $i = $i+2;
             }
         }else{
-            $this->ctrl = 'index';
-            $this->action = 'index';
+            $this->ctrl = conf::get('CTRL','route');
+            $this->action = conf::get('ACTION','route');
         }
     }
 }

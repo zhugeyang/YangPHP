@@ -18,6 +18,10 @@ namespace app\ctrl;
 
 class indexCtrl extends \core\yang{
     public function index(){
+//        $temp = \core\lib\conf::get('CTRL','route');
+//        $temp = \core\lib\conf::get('ACTION','route');
+        $temp = new \core\lib\model();
+        p($temp);
         $data='Hello Word';
         $title='视图文件';
         $this->assign('title',$title);

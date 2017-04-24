@@ -4,15 +4,16 @@
  * User: pc
  * Date: 2017/4/22
  * Time: 20:46
+ * 模型类
  */
 namespace core\lib;
+use core\lib\conf;
 class model extends \PDO{
     public function __construct(){
-        $dsn = 'mysql:host=localhost;dbname=house';
-        $username = 'root';
-        $passwd = "123456";
+
+        $database = conf::all('database');
         try{
-            parent::__construct($dsn,$username,$passwd);
+            parent::__construct($database['DSN'],$database['USERNAME'],$database['PASSWD']);
         }catch(\PDOException $e){
             p($e->getMessage());
         }

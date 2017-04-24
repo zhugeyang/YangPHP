@@ -12,6 +12,9 @@ class yang{
     public $assign;
     //启动框架
     static public function run(){
+        \core\lib\log::init();
+        \core\lib\log::log('test',123);
+        \core\lib\log::log($_SERVER,456);
         $route=new \core\lib\route();
 
         $ctrlClass = $route->ctrl;
